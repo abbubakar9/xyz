@@ -1,5 +1,5 @@
 streamlit
-moviepy==1.0.3
+moviepy
 Pillow
 tqdm
 edge-tts
@@ -8,4 +8,5 @@ freetype-py
 numpy
 aiohttp
 requests
+
 
