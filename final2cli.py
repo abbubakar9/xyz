@@ -2,6 +2,23 @@ import os
 import random
 import asyncio
 import argparse
+
+import sys
+
+print("[DEBUG] Python executable:", sys.executable)
+print("[DEBUG] Python version:", sys.version)
+
+try:
+    import moviepy
+    print("[DEBUG] moviepy version:", moviepy.__version__)
+    import moviepy.editor as mpy
+    print("[DEBUG] moviepy.editor imported OK from:", mpy.__file__)
+except Exception as e:
+    print("[DEBUG] moviepy import error:", repr(e))
+    raise
+
+
+
 from moviepy.editor import *
 from moviepy.audio.fx.audio_loop import audio_loop
 from PIL import Image, ImageDraw, ImageFont, ImageColor
@@ -488,3 +505,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
