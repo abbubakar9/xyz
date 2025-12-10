@@ -1,0 +1,10 @@
+streamlit
+moviepy
+Pillow
+tqdm
+edge-tts
+uharfbuzz
+freetype-py
+numpy
+aiohttp
+requests
