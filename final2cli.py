@@ -3,23 +3,28 @@ import random
 import asyncio
 import argparse
 
-import sys
-
-print("[DEBUG] Python executable:", sys.executable)
-print("[DEBUG] Python version:", sys.version)
-
+# ✅ MoviePy compatibility imports: works on both local & cloud
 try:
-    import moviepy
-    print("[DEBUG] moviepy version:", moviepy.__version__)
-    import moviepy.editor as mpy
-    print("[DEBUG] moviepy.editor imported OK from:", mpy.__file__)
-except Exception as e:
-    print("[DEBUG] moviepy import error:", repr(e))
-    raise
+    # Old / classic MoviePy where editor module exists
+    from moviepy.editor import (
+        AudioFileClip,
+        ImageClip,
+        ColorClip,
+        CompositeVideoClip,
+        CompositeAudioClip,
+        concatenate_videoclips,
+    )
+except ImportError:
+    # New MoviePy 2.x where everything is exported from top-level package
+    from moviepy import (
+        AudioFileClip,
+        ImageClip,
+        ColorClip,
+        CompositeVideoClip,
+        CompositeAudioClip,
+        concatenate_videoclips,
+    )
 
-
-
-from moviepy.editor import *
 from moviepy.audio.fx.audio_loop import audio_loop
 from PIL import Image, ImageDraw, ImageFont, ImageColor
 import edge_tts
@@ -240,7 +245,7 @@ def render_text_image(
         # --- Simple script path ---
         try:
             font = ImageFont.truetype(font_path, font_size)
-        except:
+        except Exception:
             font = ImageFont.load_default()
         lines = textwrap.wrap(text, width=28)
         if not lines:
@@ -505,4 +510,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
