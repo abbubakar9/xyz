@@ -2,11 +2,12 @@ streamlit
 moviepy
 Pillow
 tqdm
-edge-tts
+edge-tts==7.0.0
 uharfbuzz
 freetype-py
 numpy
 aiohttp
 requests
+
 
 
