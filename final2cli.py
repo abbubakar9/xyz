@@ -2,29 +2,7 @@ import os
 import random
 import asyncio
 import argparse
-
-# ✅ MoviePy compatibility imports: works on both local & cloud
-try:
-    # Old / classic MoviePy where editor module exists
-    from moviepy.editor import (
-        AudioFileClip,
-        ImageClip,
-        ColorClip,
-        CompositeVideoClip,
-        CompositeAudioClip,
-        concatenate_videoclips,
-    )
-except ImportError:
-    # New MoviePy 2.x where everything is exported from top-level package
-    from moviepy import (
-        AudioFileClip,
-        ImageClip,
-        ColorClip,
-        CompositeVideoClip,
-        CompositeAudioClip,
-        concatenate_videoclips,
-    )
-
+from moviepy.editor import *
 from moviepy.audio.fx.audio_loop import audio_loop
 from PIL import Image, ImageDraw, ImageFont, ImageColor
 import edge_tts
@@ -245,7 +223,7 @@ def render_text_image(
         # --- Simple script path ---
         try:
             font = ImageFont.truetype(font_path, font_size)
-        except Exception:
+        except:
             font = ImageFont.load_default()
         lines = textwrap.wrap(text, width=28)
         if not lines:
